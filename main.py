@@ -23,7 +23,8 @@ def get_client_activities(access_token, limit):
 
 def get_explore_segments(access_token, bounds):
 	url = "https://www.strava.com/api/v3/segments/explore"
-	url = url + '?bounds='+ str(bounds) + '&access_token=' + str(access_token)
+	url = url + '?bounds='+ str(bounds) + '&access_token=' + \
+	str(access_token)
 	response = requests.get(url)
 
 	if response.status_code is 200:

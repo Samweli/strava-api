@@ -1,3 +1,3 @@
 # strava-api
 
-Simple tool to query cyling routes from strava
+This tool is implemented using python

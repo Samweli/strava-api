@@ -1,0 +1,34 @@
+import stravalib
+import requests
+
+from stravalib.client import Client
+
+def execute():
+	access_token = 
+	segments = get_explore_segemnts()
+
+	if "Problem" not in segments:
+		write(segments)
+
+def get_client_activities(access_token, limit):
+
+	client = Client(access_token=ACCESS_TOKEN)
+
+	activities = client.get_activities(limit=limit)
+	return activities
+
+def get_explore_segments(access_token, bounds):
+	url = "https://www.strava.com/api/v3/segments/explore"
+	url = url + '?bounds='+ str(bounds) + '&access_token' = str(access_token)
+	response = requests.get(url)
+
+	if responce.status_code is 200:
+		return response.content
+	else:
+		return "Problem in retrieveing data"
+
+def write(segments):
+
+    with open("data/result", "a") as res_file:
+    	res_file.write(segments)
+

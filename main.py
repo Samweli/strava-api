@@ -5,8 +5,9 @@ from stravalib.client import Client
 
 def execute():
 	access_token = "83ebeabdec09f6670863766f792ead24d61fe3f9"
-	bounds = "37.821362,-122.505373,37.842038,-122.465977"
-	segments = get_explore_segemnts(access_token, bounds )
+	bounds = "-6.5754340,39.5643222,-7.0693569,39.0156433e"
+
+	segments = get_explore_segments(access_token, bounds )
 
 	if "Problem" not in segments:
 		write(segments)
@@ -25,10 +26,11 @@ def get_explore_segments(access_token, bounds):
 	url = url + '?bounds='+ str(bounds) + '&access_token=' + str(access_token)
 	response = requests.get(url)
 
-	if responce.status_code is 200:
+	if response.status_code is 200:
 		return response.content
 	else:
-		return "Problem in retrieveing data"
+		return "Problem in retrieveing data "+ \
+		str(response.status_code)
 
 def write(segments):
 

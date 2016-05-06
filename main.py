@@ -4,11 +4,14 @@ import requests
 from stravalib.client import Client
 
 def execute():
-	access_token = 
-	segments = get_explore_segemnts()
+	access_token = "83ebeabdec09f6670863766f792ead24d61fe3f9"
+	bounds = "37.821362,-122.505373,37.842038,-122.465977"
+	segments = get_explore_segemnts(access_token, bounds )
 
 	if "Problem" not in segments:
 		write(segments)
+	else:
+		print segments
 
 def get_client_activities(access_token, limit):
 
@@ -19,7 +22,7 @@ def get_client_activities(access_token, limit):
 
 def get_explore_segments(access_token, bounds):
 	url = "https://www.strava.com/api/v3/segments/explore"
-	url = url + '?bounds='+ str(bounds) + '&access_token' = str(access_token)
+	url = url + '?bounds='+ str(bounds) + '&access_token=' + str(access_token)
 	response = requests.get(url)
 
 	if responce.status_code is 200:
@@ -31,4 +34,7 @@ def write(segments):
 
     with open("data/result", "a") as res_file:
     	res_file.write(segments)
+
+if __name__ == "__main__":
+    execute()
 
